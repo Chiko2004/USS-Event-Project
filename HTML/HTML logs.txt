@@ -1,0 +1,39 @@
+##########################################################################################
+Index
+
+Main area with nav bar, will propbably copy the nav bar across all sub sections of the website
+
+- a login page that stores credentials (token?) as you navigate to other parts of the website
+so that functions for a student and a organiser can both be shown off, both locked behind a password 
+
+student - student 
+organiser - organiser
+
+
+
+##########################################################################################
+Contact 
+
+short section, doesn't need to fully function but would be cool!
+
+##########################################################################################
+About
+
+brief pretty section to show off text styling and formating 
+
+##########################################################################################
+Events 
+
+the MAIN focus point of this project and what everything depends on 
+
+##########################################################################################
+Gallery 
+
+another area to show off styling through pictures 
+
+##########################################################################################
+Login 
+
+The section that should function with events - Important 
+
+
