@@ -1,44 +1,12 @@
-/**********************   LINKS   ***************************/
-
-a:link {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: antiquewhite;
-    font-weight: bold;
-}
-
-/*********************   NAV BAR   **************************/
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    scrollbar-width: thin;
-
-}
-
-
-Body {
-    /* Font styling */
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-
-    /* positioning and layout */
-    
-    margin: 0;
-    padding: 0%;
-
-}
-
 Header {
     /* positioning and layout */
     text-align: center;
     margin: 0;
     display: flex;
+    flex: 0 0 100%;
     justify-content: space-between;
+    padding-right: 10px;
+
 
     
 
@@ -48,11 +16,11 @@ Header {
 
 #LogoIconDiv { /* general div for the logo icon, to make it clickable to go to home page (might just need tidy up) */
     /* positioning and layout */
-    flex: 1 0 15%;
+    flex: 0 0 10%;
+    display: flex;
 
     /* background styling */
     background-color: #444;
-    border: 1px solid antiquewhite;
     justify-content: flex-start;
     align-items: center;
 
@@ -61,6 +29,8 @@ Header {
 #LogoIcon { /* make clickabe to go to home page*/
     /* positioning and layout */
     height: 53px;
+    flex: 1 0 100%;
+
 
 }
 
@@ -68,9 +38,9 @@ Header {
 #HeaderNav { /* flex container for the ul*/ /* troubleshoot */ 
 
     /* positioning and layout */
-    flex: 0 0 75%;
+    flex: 0 0 80%;
     display: flex;
-    justify-content: flex-end;
+
 
 
     /* background styling */
@@ -80,27 +50,33 @@ Header {
 #HeaderNavDiv { /* flex container for the ul so it can be moved to the right towards the profile more */ /* troubleshoot */ 
 
     /* positioning and layout */
-    width: max-content;
-    height: max-content;
+    height: 100%;
     flex: 0 0 60%;
+    display: flex;
 
     /* background styling */
-    background-color: #444;
+    justify-content: center;
+    align-items: center;
 
 }
 
 #HeaderNavIcon { /* troubleshoot */ 
 
     /* positioning and layout */ 
-    height: auto;
-    width: auto;
+    flex: 0 0 100%;
+
+    justify-content: center;
+    align-items: flex-end;
+    background-image: linear-gradient (#444 to #333);
 }
 
 #HeaderNavSec { /* flex container for the ul so it can be moved to the right towards the profile more */ /* troubleshoot */ 
 
     /* positioning and layout */
     flex: 0 0 40%;
-
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
 }
 
 #HeaderNav ul { /* troubleshoot */ 
@@ -111,6 +87,7 @@ Header {
     list-style-type: none;
     
     /* positioning and layout */
+    flex: 0 0 100%;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
@@ -129,13 +106,14 @@ Header {
     flex-direction: row;
 
     /* background styling */
+    border-left: antiquewhite 0.5px solid;
 
 }
 
 #ProfileIcon {
 
     /* positioning and layout */
-    flex: 0 0 25%;
+    flex: 1 0 25%;
     height: 53px;
     object-position: center;
 
@@ -150,18 +128,15 @@ Header {
     
 
     /* positioning and layout */
+    flex: 0 1 75%;
     display: flex;
     justify-content: center;
+    padding: 10px;
 
 }
 
-#Sidebar {
-    /* Font styling */
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
 
-    /* positioning and layout */
-    text-align: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
+
+
+
+

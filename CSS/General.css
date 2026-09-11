@@ -1,0 +1,51 @@
+/**********************   LINKS   ***************************/
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited { /* placeholder */
+    color: antiquewhite;
+}
+
+
+/*********************   GENERAL   **************************/
+
+* {
+    
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scrollbar-width: thin;
+
+}
+
+
+Body {
+    /* Font styling */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+
+    /* positioning and layout */
+    
+    margin: 0;
+    padding: 0%;
+
+}
+
+#MainContainer {
+    /* Font styling */
+
+    /* positioning and layout */
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex: 0 0 100%;
+    justify-content: space-between;
+}
+

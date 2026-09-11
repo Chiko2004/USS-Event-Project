@@ -2,6 +2,10 @@ have the nav and sidebar change depending on who is logged in
 
 make fake student ids - have like 3 students all at different points studying different things showing off different examples 
 
+turn website into the presentation platform 
 
+create a presneter log in that creates an menu item that is hidden otherwise that starts the presentation.
+
+have a working qr code during the presentation that adds a calendar date and time to my phone i can showcase during my presentation
 ##########################################################################################
 

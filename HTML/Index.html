@@ -2,13 +2,17 @@
 
 <html lang="en">
 <head>
+    <link rel="icon" href="media/favicon.png" type="image/x-icon">
     <meta charset="UTF-8">
-    <title>CSU</title>
-    <link rel="stylesheet" href="../CSS/Index-styles.css">
+    <title>USS Event Website</title>
+    <link rel="stylesheet" href="../CSS/General.css">
+    <link rel="stylesheet" href="../CSS/Header.css">
+    <link rel="stylesheet" href="../CSS/MainContent.css">
+    <link rel="stylesheet" href="../CSS/Sidebar.css">
 </head>
 
 <!--#######################################################################################################-->
-<!--#################################       Navigation bars        ########################################-->
+<!--#################################       Navigation bar        ########################################-->
 <!--#######################################################################################################-->
 
 <body>
@@ -18,9 +22,9 @@
                 <img id="LogoIcon" src="Media/CSU_logo_white.svg" alt="School Logo">
             </div>    
 
-            <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="HeaderNav"><!--flex-->
+            <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="HeaderNav">
                 <div id="HeaderNavDiv">
-                    <img id="HeaderNavIcon" src="Media\menu-icon.svg" alt="Menu Icon">
+                    <!--Insert desgin here-->
                 </div>
                     
                 <section id="HeaderNavSec">
@@ -35,24 +39,66 @@
                 </section>
             </nav>
 
-            <div id="ProfileDiv"><!--flex-->
-                <img id="ProfileIcon" src="Media\profile-pic.jpg" alt="Profile">
-                <a id="ProfileUsername" href="Profile.html">Alexander Cicolini <!--if logged in, should change to user's name--></a>
 
-            
+
+            <div id="ProfileDiv">
+                <a href="Profile.html"><img id="ProfileIcon" src="Media\profile-pic.jpg" alt="Profile"></a>
+                <a href="Profile.html"><p  id="ProfileUsername">Alexander Cicolini</p> <!--if logged in, should change to user's name--></a>
+
+                
             </div>
         
         </header>
 
-        <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="SideNav"><!--flex-->
-            <ul>
-                <li><a href="Schedule.html" target="_self">Schedule</a></li> 
-                <li><a href="Favourites.html" target="_self">Favourites</a></li>
-                <li><a href="Notifications.html" target="_self">Notifications</a></li>
-                <li><a href="Student Help.html" target="_self">Help</a></li>
-                <li><a href="Fees.html" target="_self">Fees</a></li>
-            </ul>
-        </nav>
+<!--########################################################################################################-->
+        <div id="MainContainer">
+
+
+<!--########################################################################################################-->
+<!--####################################      SideBar       ################################################-->
+<!--########################################################################################################-->
+
+
+            <sidebar> 
+
+                <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="SideBarNav"><!--flex-->
+                    <ul>
+                        <li><a href="Schedule.html" target="_self">Schedule</a></li> 
+                        <li><a href="Favourites.html" target="_self">Favourites</a></li>
+                        <li><a href="Notifications.html" target="_self">Notifications</a></li>
+                        <li><a href="Student Help.html" target="_self">Help</a></li>                        
+                        <li><a href="Fees.html" target="_self">Fees</a></li>
+                    </ul>
+                </nav>
+
+            </sidebar>
+        
+
+            <!--#######################################################################################################-->
+
+
+            <main>
+
+                <h2>Student Portal</h2>
+
+                <div>
+
+                    <div id="Column 1">
+
+                    </div>
+
+                    <div id="Column 2">
+
+                    </div>
+
+                    <div id="Column 3">
+
+                    </div>
+
+                </div>
+            </main>
+
+        </div>
 
 <!--#######################################################################################################-->
 

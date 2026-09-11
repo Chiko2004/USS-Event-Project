@@ -31,10 +31,18 @@ Gallery
 
 another area to show off styling through pictures 
 
+pcitures change depending on person?
+
 ##########################################################################################
 Login 
 
 The section that should function with events - Important 
+
+3 seperate student log ins to show different features
+
+1 event organser log in to show off organisation of events
+
+1 log in for a presenter  
 
 ##########################################################################################
 
