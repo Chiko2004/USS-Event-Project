@@ -1,0 +1,7 @@
+have the nav and sidebar change depending on who is logged in  
+
+make fake student ids - have like 3 students all at different points studying different things showing off different examples 
+
+
+##########################################################################################
+

@@ -4,42 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <title>CSU</title>
-    <link rel="stylesheet" href="index-style.css">
+    <link rel="stylesheet" href="../CSS/Index-styles.css">
 </head>
 
-<!--########################################################-->
+<!--#######################################################################################################-->
+<!--#################################       Navigation bars        ########################################-->
+<!--#######################################################################################################-->
 
 <body>
     <section itemscope itemtype="http://schema.org/Organization">
         <header>
+            <div id="LogoIconDiv">
+                <img id="LogoIcon" src="Media/CSU_logo_white.svg" alt="School Logo">
+            </div>    
 
-        <h1 itemprop="name">Charle's Sturt University</h1>
+            <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="HeaderNav"><!--flex-->
+                <div id="HeaderNavDiv">
+                    <img id="HeaderNavIcon" src="Media\menu-icon.svg" alt="Menu Icon">
+                </div>
+                    
+                <section id="HeaderNavSec">
+                    <ul>
+                        <li><a href="Index.html" target="_self">Home</a></li>
+                        <li><a href="About.html" target="_self">About</a></li>
+                        <li><a href="Contact.html" target="_self">Contact</a></li>
+                        <li><a href="Events.html" target="_self">Events</a></li>
+                        <li><a href="Gallery.html" target="_self">Gallery</a></li>
+                        <li><a href="What's new.html" target="_self">What's New</a></li>
+                    </ul>
+                </section>
+            </nav>
 
+            <div id="ProfileDiv"><!--flex-->
+                <img id="ProfileIcon" src="Media\profile-pic.jpg" alt="Profile">
+                <a id="ProfileUsername" href="Profile.html">Alexander Cicolini <!--if logged in, should change to user's name--></a>
+
+            
+            </div>
+        
         </header>
 
-        <nav>
+        <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="SideNav"><!--flex-->
             <ul>
-                <li><a href="Index.html">Home</a></li>
-                <li><a href="About.html">About</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Events.html">Events</a></li>
-                <li><a href="Gallery.html">Gallery</a></li>
-                <li><a href="Login.html">Login</a></li>
-                <li
+                <li><a href="Schedule.html" target="_self">Schedule</a></li> 
+                <li><a href="Favourites.html" target="_self">Favourites</a></li>
+                <li><a href="Notifications.html" target="_self">Notifications</a></li>
+                <li><a href="Student Help.html" target="_self">Help</a></li>
+                <li><a href="Fees.html" target="_self">Fees</a></li>
             </ul>
         </nav>
 
-        <nav>
-            <ul>
-                <li><a href="Schedule.html">Home</a></li> 
-                <li><a href="About.html">About</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Events.html">Events</a></li>
-                <li><a href="Gallery.html">Gallery</a></li>
-                <li><a href="Login.html">Login</a></li>
-            </ul>
-        </nav>
-
+<!--#######################################################################################################-->
 
 
     </section>

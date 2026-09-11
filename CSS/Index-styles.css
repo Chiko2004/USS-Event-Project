@@ -1,0 +1,167 @@
+/**********************   LINKS   ***************************/
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: antiquewhite;
+    font-weight: bold;
+}
+
+/*********************   NAV BAR   **************************/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scrollbar-width: thin;
+
+}
+
+
+Body {
+    /* Font styling */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+
+    /* positioning and layout */
+    
+    margin: 0;
+    padding: 0%;
+
+}
+
+Header {
+    /* positioning and layout */
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+
+    
+
+    /* background styling */
+    background-color: #333;
+}
+
+#LogoIconDiv { /* general div for the logo icon, to make it clickable to go to home page (might just need tidy up) */
+    /* positioning and layout */
+    flex: 1 0 15%;
+
+    /* background styling */
+    background-color: #444;
+    border: 1px solid antiquewhite;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+#LogoIcon { /* make clickabe to go to home page*/
+    /* positioning and layout */
+    height: 53px;
+
+}
+
+
+#HeaderNav { /* flex container for the ul*/ /* troubleshoot */ 
+
+    /* positioning and layout */
+    flex: 0 0 75%;
+    display: flex;
+    justify-content: flex-end;
+
+
+    /* background styling */
+
+}
+
+#HeaderNavDiv { /* flex container for the ul so it can be moved to the right towards the profile more */ /* troubleshoot */ 
+
+    /* positioning and layout */
+    width: max-content;
+    height: max-content;
+    flex: 0 0 60%;
+
+    /* background styling */
+    background-color: #444;
+
+}
+
+#HeaderNavIcon { /* troubleshoot */ 
+
+    /* positioning and layout */ 
+    height: auto;
+    width: auto;
+}
+
+#HeaderNavSec { /* flex container for the ul so it can be moved to the right towards the profile more */ /* troubleshoot */ 
+
+    /* positioning and layout */
+    flex: 0 0 40%;
+
+}
+
+#HeaderNav ul { /* troubleshoot */ 
+
+    /* Font styling */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    list-style-type: none;
+    
+    /* positioning and layout */
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    
+}
+
+
+
+#ProfileDiv { /*make clickabe to go to profile page*/
+
+    /* positioning and layout */
+    flex: 1 0 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+
+    /* background styling */
+
+}
+
+#ProfileIcon {
+
+    /* positioning and layout */
+    flex: 0 0 25%;
+    height: 53px;
+    object-position: center;
+
+    /* Image styling */
+    border-radius: 50%;
+
+}
+
+#ProfileUsername {
+
+    /* Font styling */
+    
+
+    /* positioning and layout */
+    display: flex;
+    justify-content: center;
+
+}
+
+#Sidebar {
+    /* Font styling */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+
+    /* positioning and layout */
+    text-align: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
