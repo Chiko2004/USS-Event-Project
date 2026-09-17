@@ -22,6 +22,7 @@ a:visited { /* placeholder */
     margin: 0;
     padding: 0;
     scrollbar-width: thin;
+    overflow-x: hidden;
 
 }
 

@@ -1,16 +1,17 @@
 Header {
-    /* positioning and layout */
+    /* Positioning & Fixed Pinning */
+    position: fixed;
+    top: 0; /* top only works for things that are using the position tag*/
+    width: 100%;
+    height: 70px; /* Gives it a rigid, predictable height */
+    z-index: 1000; /* Keeps it layered above your content and sidebar */
+
+    /* Layout */
     text-align: center;
-    margin: 0;
     display: flex;
-    flex: 0 0 100%;
     justify-content: space-between;
-    padding-right: 10px;
 
-
-    
-
-    /* background styling */
+    /* Background styling */
     background-color: #333;
 }
 
@@ -38,7 +39,7 @@ Header {
 #HeaderNav { /* flex container for the ul*/ /* troubleshoot */ 
 
     /* positioning and layout */
-    flex: 0 0 80%;
+    flex: 0 0 75%;
     display: flex;
 
 
@@ -99,13 +100,13 @@ Header {
 #ProfileDiv { /*make clickabe to go to profile page*/
 
     /* positioning and layout */
-    flex: 1 0 10%;
+    flex: 1 0 15%;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     flex-direction: row;
 
     /* background styling */
+    background-color: #444;
     border-left: antiquewhite 0.5px solid;
 
 }
@@ -113,7 +114,7 @@ Header {
 #ProfileIcon {
 
     /* positioning and layout */
-    flex: 1 0 25%;
+    width: 53px;
     height: 53px;
     object-position: center;
 
@@ -128,10 +129,8 @@ Header {
     
 
     /* positioning and layout */
-    flex: 0 1 75%;
-    display: flex;
-    justify-content: center;
     padding: 10px;
+    overflow: hidden;
 
 }
 
