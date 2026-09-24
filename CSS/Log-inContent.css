@@ -1,0 +1,30 @@
+main {
+    /* Font styling */
+    font-size: 30;
+
+
+    /* positioning and layout */
+    width: 100%;
+    min-height: 100vh; /* figure out how to make full length of page be determined according to the 70px margin below*/
+    flex: 1 0 75%;
+
+
+
+    /* background styling */
+    background-color: antiquewhite;
+}
+
+#Form {
+    /* Font styling */
+    font-size: 30;
+
+
+    /* positioning and layout */
+    padding: 50px;
+    margin: 100px;
+
+
+    /* background styling */
+    background-color: antiquewhite;
+}
+

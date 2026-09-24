@@ -9,3 +9,13 @@ create a presneter log in that creates an menu item that is hidden otherwise tha
 have a working qr code during the presentation that adds a calendar date and time to my phone i can showcase during my presentation
 ##########################################################################################
 
+if logged in redirect to profile page 
+
+if not logged in redirect to log in page 
+
+if student doesn't have account, add a sign up section - make it brief 
+
+keep log in token so they can access other parts of website 
+
+have an example for a student that needs to sign up as opposed to a student that has been there efor a few years and just needs to log into
+-- shows that data can not only be stored but also collected 

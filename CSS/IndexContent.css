@@ -1,0 +1,68 @@
+main {
+    /* Font styling */
+    font-size: 30;
+
+
+    /* positioning and layout */
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 70px; 
+    flex: 1 0 75%;
+    margin-left: 100px;
+
+
+    /* background styling */
+    background-color: antiquewhite;
+}
+
+main h2 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 35px;
+}
+
+#Columns {
+/* positioning and layout */
+padding-bottom: 35px;
+padding-left: 35px;
+padding-right: 35px;
+padding-top: 25px;
+display: flex;
+justify-content: space-between;
+
+
+
+/* background styling */
+}
+
+#Column1, #Column2, #Column3 {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+
+#Column1 {
+    flex: 0 0 25%;
+    
+}
+
+#Column2 {
+    flex: 0 0 50%;
+    
+}
+
+#Column3 {
+    flex: 0 0 25%;
+
+}
+
+.Box {
+    padding: 10px;
+    background-color: #333;
+    border: double;
+
+}
