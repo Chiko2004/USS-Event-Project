@@ -51,7 +51,7 @@ justify-content: space-between;
 }
 
 .Box {
-    background-color: #333;
+    background-color: #555;
     border: double;
     box-sizing: border-box;
     height: 50%;
