@@ -79,7 +79,7 @@ Header {
     align-items: flex-end;
 }
 
-#HeaderNav ul { /* troubleshoot */ 
+#HeaderNav section ul { /* troubleshoot */ 
 
     /* Font styling */
     font-family: 'Roboto', sans-serif;

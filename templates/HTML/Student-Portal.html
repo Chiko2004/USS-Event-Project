@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link rel="icon" href="{{ url_for('static', filename='Media/favicon.png') }}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title>USS Event Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/General.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Sidebar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/IndexContent.css') }}">
+</head>
+
+<!--#######################################################################################################-->
+<!--#################################       Navigation bar        ########################################-->
+<!--#######################################################################################################-->
+
+<body>
+    <section itemscope itemtype="http://schema.org/Organization">
+        <header>
+            <div id="LogoIconDiv">
+                <a href="/Student-Portal"><img src="{{ url_for('static', filename='Media/CSU_logo_white.svg') }}" alt="Logo"></a>
+            </div>  
+
+            <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="HeaderNav">
+                <div id="HeaderNavDiv">
+                    <!--Insert desgin here-->
+                </div>
+                    
+                <section id="HeaderNavSec">
+                    <ul>
+                        <li><a href="/" target="_self">Home</a></li>
+                        <li><a href="/About" target="_self">About</a></li>
+                        <li><a href="/Contact" target="_self">Contact</a></li>
+                        <li><a href="/Events" target="_self">Events</a></li>
+                        <li><a href="/Gallery" target="_self">Gallery</a></li>
+                        <li><a href="/What's new" target="_self">What's New</a></li>
+                    </ul>
+                </section>
+            </nav>
+
+
+
+            <div id="ProfileDiv">
+                <a href="/profile"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
+                <a href="/Login"><p  id="ProfileUsername">Log in / Sign up</p> <!--if logged in, should change to user's name--></a>
+
+                
+            </div>
+        
+        </header>
+
+<!--########################################################################################################-->
+        <div id="MainContainer">
+
+
+<!--########################################################################################################-->
+<!--####################################      SideBar       ################################################-->
+<!--########################################################################################################-->
+
+
+            <aside id="SideBar"> 
+                <nav itemscope itemtype="http://schema.org/SiteNavigationElement"><!--flex-->
+                    <ul>
+                        <li><a href="/Schedule" target="_self">Schedule</a></li> 
+                        <li><a href="/Favourites" target="_self">Favourites</a></li>
+                        <li><a href="/Notifications" target="_self">Notifications</a></li>
+                        <li><a href="/Student Help" target="_self">Help</a></li>                        
+                        <li><a href="/Fees" target="_self">Fees</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        
+
+<!--#######################################################################################################-->
+
+
+            <main>
+
+                <h2>Student Portal</h2>
+
+                <div id="Columns">
+
+                    <div id="Column1">
+                        <div class="Box">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+
+                        <div class="Box">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                    </div>
+
+                    <div id="Column2">
+                        <div class="Box">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+
+                        <div class="Box">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                    </div>
+
+                    <div id="Column3">
+                        <div class="Box">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+
+                        <div class="Box">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+        </div>
+
+<!--#######################################################################################################-->
+
+
+    </section>
+</body>

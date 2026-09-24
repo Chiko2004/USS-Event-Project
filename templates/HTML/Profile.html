@@ -2,13 +2,13 @@
 
 <html lang="en">
 <head>
-    <link rel="icon" href="media/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='Media/favicon.png') }}" type="image/x-icon">
     <meta charset="UTF-8">
     <title>USS Event Website</title>
-    <link rel="stylesheet" href="../CSS/Main/General.css">
-    <link rel="stylesheet" href="../CSS/Main/Header.css">
-    <link rel="stylesheet" href="../CSS/ProfileContent.css">
-    <link rel="stylesheet" href="../CSS/Main/Sidebar.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/General.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/ProfileContent.css') }}">   
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Sidebar.css') }}">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <section itemscope itemtype="http://schema.org/Organization">
             <header>
                 <div id="LogoIconDiv">
-                    <a href="Index.html"><img id="LogoIcon" src="Media/CSU_logo_white.svg" alt="School Logo"></a>
+                    <a href="/Student-Portal"><img src="{{ url_for('static', filename='Media/CSU_logo_white.svg') }}" alt="Logo"></a>
                 </div>      
 
                 <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="HeaderNav">
@@ -26,12 +26,12 @@
                         
                     <section id="HeaderNavSec">
                         <ul>
-                            <li><a href="Index.html" target="_self">Home</a></li>
-                            <li><a href="About.html" target="_self">About</a></li>
-                            <li><a href="Contact.html" target="_self">Contact</a></li>
-                            <li><a href="Events.html" target="_self">Events</a></li>
-                            <li><a href="Gallery.html" target="_self">Gallery</a></li>
-                            <li><a href="What's new.html" target="_self">What's New</a></li>
+                            <li><a href="/" target="_self">Home</a></li>
+                            <li><a href="/About" target="_self">About</a></li>
+                            <li><a href="/Contact" target="_self">Contact</a></li>
+                            <li><a href="/Events" target="_self">Events</a></li>
+                            <li><a href="/Gallery" target="_self">Gallery</a></li>
+                            <li><a href="/What's new" target="_self">What's New</a></li>
                         </ul>
                     </section>
                 </nav>
@@ -39,8 +39,8 @@
 
 
                 <div id="ProfileDiv">
-                    <a href="Profile.html"><img id="ProfileIcon" src="Media\profile-pic.jpg" alt="Profile"></a>
-                    <a href="Profile.html"><p  id="ProfileUsername">Alexander Cicolini</p> <!--if logged in, should change to user's name--></a>
+                    <a href="/profile"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
+                    <a href="/Profile"><p  id="ProfileUsername">Alexander Cicolini</p> <!--if logged in, should change to user's name--></a>
                 </div>
             
             </header>
@@ -57,11 +57,11 @@
                 <aside id="SideBar"> 
                     <nav itemscope itemtype="http://schema.org/SiteNavigationElement"><!--flex-->
                         <ul>
-                            <li><a href="Schedule.html" target="_self">Schedule</a></li> 
-                            <li><a href="Favourites.html" target="_self">Favourites</a></li>
-                            <li><a href="Notifications.html" target="_self">Notifications</a></li>
-                            <li><a href="Student Help.html" target="_self">Help</a></li>                        
-                            <li><a href="Fees.html" target="_self">Fees</a></li>
+                            <li><a href="/Schedule" target="_self">Schedule</a></li> 
+                            <li><a href="/Favourites" target="_self">Favourites</a></li>
+                            <li><a href="/Notifications" target="_self">Notifications</a></li>
+                            <li><a href="/Student Help" target="_self">Help</a></li>                        
+                            <li><a href="/Fees" target="_self">Fees</a></li>
                         </ul>
                     </nav>
                 </aside>
