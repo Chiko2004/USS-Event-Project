@@ -41,10 +41,10 @@
                 <div id="ProfileDiv">
                     <a href="{{ url_for('profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
                     
-                    <a href="{% if session.get('first_name') %}{{ url_for('profile') }}{% else %}{{ url_for('login') }}{% endif %}">
+                    <a href="{{ url_for('profile') if user else url_for('login') }}">
                         <p id="ProfileUsername">
-                            {% if session.get('first_name') %}
-                                {{ session.get('first_name') }} {{ session.get('last_name') }}
+                            {% if user %}
+                                {{ user['first_name'] }} {{ user['last_name'] }}
                             {% else %}
                                 Log in / Sign up
                             {% endif %}
@@ -89,7 +89,13 @@
 
                         <div id="Column1">
                             <div class="Box">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <h3>Account details</h3>
+                                <ul class="user-details">
+                                    <li>Status: {{user['role']}}</li>
+                                    <li>First name: {{user['first_name']}}</li>
+                                    <li>Surname: {{user['last_name']}}</li>
+                                    <li>DOB: {{user['dob']}}</li>
+                                </ul>
                             </div>
 
                             <div class="Box">

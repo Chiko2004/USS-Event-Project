@@ -166,10 +166,8 @@ def login():
         if user and check_password_hash(user['password'], password): #checks if the user exists, if there was no email/username then user = none 
             # Store their info in Flask's secure session cookie      if user does exist it goes to the next line of code, check_password_hash checks 
             session['user_id'] = user['id']                          #the password that was just typed and scrambles it and sees if it matches with the db
-            session['username'] = user['username']
             session['role'] = user['role']
-            session['first_name'] = user['first_name']  
-            session['last_name'] = user['last_name']    
+    
             
             return redirect(url_for('profile'))
         else:
@@ -189,11 +187,16 @@ def profile():
     if session.get('role') == 'Admin':
         return redirect(url_for('dashboard'))
     
-    if 'username' not in session:
+    if 'user_id' not in session:
         return redirect(url_for('login'))
     
-    return render_template('Profile.html')
-
+    # Fetch user data from database using their session ID
+    conn = get_db_connection()
+    user = conn.execute('SELECT * FROM users WHERE id = ?', (session['user_id'],)).fetchone()
+    conn.close()
+    
+    # Pass the 'user' object into the HTML template!
+    return render_template('Profile.html', user=user)
     
     
 ###################################################################################################################
@@ -203,22 +206,30 @@ def profile():
 @app.route('/Dashboard')
 def dashboard():
     # Check if the user is actually logged in via session
-    if 'username' not in session:
+    
+    if 'user_id' not in session:
         return redirect(url_for('login'))
     
     if session.get('role') == 'Admin':
         return render_template('Dashboard.html')
     else:
         return redirect(url_for('home'))
-
     
+@app.context_processor
+def inject_user():
+    """Automatically makes 'user' available in all Jinja templates."""
+    if 'user_id' in session:
+        conn = get_db_connection()
+        user = conn.execute('SELECT * FROM users WHERE id = ?', (session['user_id'],)).fetchone()
+        conn.close()
+        return dict(user=user)
+    return dict(user=None)
     
     
 
 ###################################################################################################################
                                                                                                                   #
 ###################################################################################################################
-
 
 @app.route('/logout')
 def logout():
