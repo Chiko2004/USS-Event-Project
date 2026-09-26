@@ -105,6 +105,11 @@ def gallery():
 
 @app.route('/Signup', methods=['GET', 'POST'])
 def signup():
+    
+    if 'username' in session:
+        return redirect(url_for('profile'))
+    
+    
     if request.method == 'POST': #post is used in html forms
         first_name = request.form['first_name']
         last_name = request.form['last_name']
@@ -121,7 +126,7 @@ def signup():
         hashed_password = generate_password_hash(password)
         
         # Default new accounts to the pending 'user' role until permissions are granted
-        role = 'user' 
+        role = 'Admin' 
         
         conn = get_db_connection() #this was already declared but cannot be called on again because it was in a def(), therefore it has to be redeclared 
         try:
@@ -143,6 +148,10 @@ def signup():
 
 @app.route('/Login', methods=['GET', 'POST'])
 def login():
+    
+    if 'username' in session:
+            return redirect(url_for('profile'))
+    
     if request.method == 'POST': #post is the method used in html forms, get is to view it
         username_or_email = request.form['username_or_email'] #gives the user a choice between username or email (not sure if ill keep this)
         password = request.form['password'] 
@@ -162,7 +171,6 @@ def login():
             session['first_name'] = user['first_name']  
             session['last_name'] = user['last_name']    
             
-            # Send them to a placeholder dashboard (we can build this next!)
             return redirect(url_for('profile'))
         else:
             return "Invalid username/email or password. Go back and try again."
@@ -178,14 +186,39 @@ def login():
 @app.route('/Profile')
 def profile():
     # Check if the user is actually logged in via session
+    if session.get('role') == 'Admin':
+        return redirect(url_for('dashboard'))
+    
     if 'username' not in session:
         return redirect(url_for('login'))
     
     return render_template('Profile.html')
 
+    
+    
 ###################################################################################################################
                                                                                                                   #
 ###################################################################################################################
+
+@app.route('/Dashboard')
+def dashboard():
+    # Check if the user is actually logged in via session
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    if session.get('role') == 'Admin':
+        return render_template('Dashboard.html')
+    else:
+        return redirect(url_for('home'))
+
+    
+    
+    
+
+###################################################################################################################
+                                                                                                                  #
+###################################################################################################################
+
 
 @app.route('/logout')
 def logout():
