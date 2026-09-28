@@ -48,7 +48,7 @@ def signup():
         # Hash the password so it's secure in the database (werkzeug security)
         hashed_password = generate_password_hash(password)
         
-        # Default new accounts to Admin as per your setup
+        # Default new accounts to user
         role = 'user' 
         
         conn = get_db_connection() # this was already declared but cannot be called on again because it was in a def(), therefore it has to be redeclared 
@@ -120,7 +120,10 @@ def login():
 def profile():
     # Check if the user is an Admin, redirect to dashboard
     if session.get('role') == 'Admin': #if role = admin 
-        return redirect(url_for('auth.dashboard')) #redirect to dashboard
+        return redirect(url_for('admin.dashboard')) #redirect to dashboard
+    
+    if session.get('role') =='organiser': #if role = organsier
+        return redirect(url_for('organiser.organiser_portal')) #redirect to portal
     
     # Check if the user is actually logged in via session
     if 'user_id' not in session: #if user not logged in
@@ -136,21 +139,6 @@ def profile():
 
 #####################################################################################################################################
 
-@auth_bp.route('/Dashboard')
-def dashboard():
-    if 'user_id' not in session:
-        return redirect(url_for('auth.login'))
-    
-    conn = get_db_connection()
-    user = conn.execute('SELECT * FROM users WHERE id = ?', (session['user_id'],)).fetchone()
-    
-    if session.get('role') == 'Admin':
-        all_users = conn.execute('SELECT * FROM users').fetchall()
-        conn.close()
-        return render_template('Dashboard.html', user=user, all_users=all_users)
-    
-    conn.close()
-    return redirect(url_for('main.home'))
 
 
 

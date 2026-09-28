@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html lang="en">
 <head>
     <link rel="icon" href="{{ url_for('static', filename='Media/favicon.png') }}" type="image/x-icon">
@@ -7,11 +8,13 @@
     <title>USS Event Website</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/General.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/ProfileContent.css') }}">   
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/ProfileContent.css') }}">  
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Sidebar.css') }}">
 </head>
 
+
 <body>
+
 
     <section itemscope itemtype="http://schema.org/Organization">
             <header>
@@ -19,11 +22,12 @@
                     <a href="/Student-Portal"><img src="{{ url_for('static', filename='Media/CSU_logo_white.svg') }}" alt="Logo"></a>
                 </div>      
 
+
                 <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="HeaderNav">
                     <div id="HeaderNavDiv">
                         <!--Insert desgin here-->
                     </div>
-                        
+                       
                     <section id="HeaderNavSec">
                         <ul>
                             <li><a href="/" target="_self">Home</a></li>
@@ -38,9 +42,12 @@
 
 
 
+
+
+
                 <div id="ProfileDiv">
                     <a href="{{ url_for('auth.profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
-                    
+                   
                     <a href="{{ url_for('auth.profile') if user else url_for('auth.login') }}">
                         <p id="ProfileUsername">
                             {% if user %}
@@ -51,11 +58,14 @@
                         </p>
                     </a>
                 </div>
-            
+           
             </header>
+
 
     <!--########################################################################################################-->
             <div id="MainContainer">
+
+
 
 
     <!--########################################################################################################-->
@@ -63,10 +73,12 @@
     <!--########################################################################################################-->
 
 
-                <aside id="SideBar"> 
+
+
+                <aside id="SideBar">
                     <nav itemscope itemtype="http://schema.org/SiteNavigationElement"><!--flex-->
                         <ul>
-                            <li><a href="/Schedule" target="_self">Schedule</a></li> 
+                            <li><a href="/Schedule" target="_self">Schedule</a></li>
                             <li><a href="/Favourites" target="_self">Favourites</a></li>
                             <li><a href="/Notifications" target="_self">Notifications</a></li>
                             <li><a href="/Student Help" target="_self">Help</a></li>                        
@@ -74,18 +86,24 @@
                         </ul>
                     </nav>
                 </aside>
-            
+           
+
 
     <!--#######################################################################################################-->
 
 
+
+
                 <main>
 
-                    <h2>Dashboard</h2>
-                    
+
+                    <h2>Organiser Portal</h2>
+                   
                     <p></p>
 
+
                     <div id="Columns">
+
 
                         <div id="Column1">
                             <div class="Box">
@@ -96,75 +114,75 @@
                                     <li>Surname: {{user['last_name']}}</li>
                                     <li>DOB: {{user['dob']}}</li>
                                 </ul>
+                               
                             </div>
+
+
+                           
+
 
                             <div class="Box">
                                 <a href= "{{ url_for ('auth.logout')}}"><p>Logout</p></a>
                             </div>
                         </div>
 
-                    </div>
 
-                    <!-- Admin User Management Table (Only shows up when all_users data is passed from the route) -->
-                    {% if all_users %}
-                    <div id="AdminUserManagementSection" style="margin-top: 30px;">
-                        <div class="Box">
-                            <h3>User Management Panel</h3>
-                            <table border="1" cellpadding="10">
-                                <thead>
-                                    <tr>
-                                        <th>Username</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>New Password</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for u in all_users %}
-                                    <!-- Each row is its own form, so editing and saving happens right here -->
-                                    <tr>
-                                        <form action="{{ url_for('admin.edit_user_inline', user_id=u['id']) }}" method="POST">
-                                            <td>{{ u['username'] }}</td>
-                                            <td>
-                                                <input type="text" name="first_name" value="{{ u['first_name'] }}" required style="width: 100px;">
-                                            </td>
-                                            <td>
-                                                <input type="text" name="last_name" value="{{ u['last_name'] }}" required style="width: 100px;">
-                                            </td>
-                                            <td>
-                                                <input type="email" name="email" value="{{ u['email'] }}" required style="width: 150px;">
-                                            </td>
-                                            <td>
-                                                <select name="role">
-                                                    <option value="user" {% if u['role'] == 'user' %}selected{% endif %}>User</option>
-                                                    <option value="organiser" {% if u['role'] == 'organiser' %}selected{% endif %}>Organiser</option>
-                                                    <option value="Admin" {% if u['role'] == 'Admin' %}selected{% endif %}>Admin</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="password" name="password" placeholder="Leave blank" style="width: 100px;">
-                                            </td>
-                                            <td>
-                                                <button type="submit">Save</button>
-                                            </td>
-                                        </form>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    {% endif %}
+                            <div id="Column2">
+                                <div class="Box">
+                                    <h3>Create New Event</h3>
+                                    
+                                    <!-- Single clean form wrapping all the event inputs -->
+                                    <form action="{{ url_for('organiser.create_event') }}" method="POST">
+                                        
+                                        <div class="form-group" style="margin-bottom: 15px;">
+                                            <label for="title">Event Title:</label><br>
+                                            <input type="text" id="title" name="title" required style="width: 100%;" placeholder="e.g., Cyber Security Workshop">
+                                        </div>
+
+                                        <div class="form-group" style="margin-bottom: 15px;">
+                                            <label for="description">Description:</label><br>
+                                            <textarea id="description" name="description" rows="3" required style="width: 100%;" placeholder="Brief details about the event..."></textarea>
+                                        </div>
+
+                                        <div class="form-group" style="margin-bottom: 15px;">
+                                            <label for="room">Room / Location:</label><br>
+                                            <input type="text" id="room" name="room" required style="width: 100%;" placeholder="e.g., Building 12, Room 204">
+                                        </div>
+
+                                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                            <div style="flex: 1;">
+                                                <label for="start_time">Start Time:</label><br>
+                                                <input type="time" id="start_time" name="start_time" required style="width: 100%;">
+                                            </div>
+                                            <div style="flex: 1;">
+                                                <label for="end_time">End Time:</label><br>
+                                                <input type="time" id="end_time" name="end_time" required style="width: 100%;">
+                                            </div>
+                                        </div>
+
+                                        <!-- Calendar Widget for selecting a date -->
+                                        <div id="Calender" style="margin-bottom: 15px;">
+                                            <!-- Date of event -->
+                                            <label for="date">Date of event:</label>
+                                            <input type="date" id="date" name="date" value="{{ request.form.get('date')}}" required>
+                                            <br>
+                                        </div>
+
+                                        <button type="submit" style="width: 100%; padding: 10px; cursor: pointer;">Publish Event</button>
+                                    </form>
+                                </div>
+                            </div>
+                </main>
+
+
+            </div>
+
 
     <!--#######################################################################################################-->
 
 
-        </section>
-    
-</body>
-</html>
 
-```
+
+        </section>
+   
+</body>

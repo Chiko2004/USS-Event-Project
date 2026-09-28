@@ -8,6 +8,7 @@ def get_db_connection():
 
 def init_db():
     conn = get_db_connection() 
+    
     # Creates the users table with role support if it doesn't already exist
     conn.execute('''
         CREATE TABLE IF NOT EXISTS users (
@@ -19,10 +20,26 @@ def init_db():
             dob TEXT NOT NULL,
             password TEXT NOT NULL,
             role TEXT NOT NULL DEFAULT 'user'
-    )
-    ''') # all of that section just above is sql, makes it so the data cannot be null 
-    conn.commit() # once the users are in the changes get committed 
+        )
+    ''')
+    
+    # Creates the events table matching your organiser form inputs
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS events (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            description TEXT NOT NULL,
+            date TEXT NOT NULL,
+            start_time TEXT NOT NULL,
+            end_time TEXT NOT NULL,
+            room TEXT NOT NULL,
+            created_by INTEGER,
+            FOREIGN KEY (created_by) REFERENCES users (id)
+        )
+    ''')
+    
+    conn.commit() # once changes are made, commit them
     conn.close()
 
-# Automatically build the database table when initialized
+# Automatically build the database tables when initialized
 init_db()

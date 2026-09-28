@@ -67,3 +67,21 @@ def edit_user_inline(user_id): # Match the name expected by your HTML url_for()
     except sqlite3.IntegrityError:
         conn.close()
         return "That email address is already taken by another account."
+    
+#######################################################################################
+    
+@admin_bp.route('/Dashboard')
+def dashboard():
+    if 'user_id' not in session:
+        return redirect(url_for('auth.login'))
+    
+    conn = get_db_connection()
+    user = conn.execute('SELECT * FROM users WHERE id = ?', (session['user_id'],)).fetchone()
+    
+    if session.get('role') == 'Admin':
+        all_users = conn.execute('SELECT * FROM users').fetchall()
+        conn.close()
+        return render_template('Dashboard.html', user=user, all_users=all_users)
+    
+    conn.close()
+    return redirect(url_for('main.home'))
