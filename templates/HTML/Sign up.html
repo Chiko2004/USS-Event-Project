@@ -42,9 +42,9 @@
 
 
             <div id="ProfileDiv">
-                <a href="{{ url_for('profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
+                <a href="{{ url_for('auth.profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
                 
-                <a href="{{ url_for('profile') if user else url_for('login') }}">
+                <a href="{{ url_for('auth.profile') if user else url_for('auth.login') }}">
                     <p id="ProfileUsername">
                         {% if user %}
                             {{ user['first_name'] }} {{ user['last_name'] }}
@@ -65,7 +65,7 @@
 
             <main>
                 <h2>Sign up</h2>
-                <form action="{{ url_for('signup') }}" method="POST">
+                <form action="{{ url_for('auth.signup') }}" method="POST">
                     <fieldset id="Form">
                         <!-- First Name Input -->
                         <label for="first_name">First Name:</label>
@@ -94,12 +94,16 @@
 
                         <!-- Button for submitting data -->
                         <button id="submit-button"type="submit">Sign Up</button>
-                    </fieldset>
-                </form>
-                    <div>
+
+                        <div>
                         <!-- Cleaned up login link -->
-                        <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
-                    </div>
+                        <p>Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+                        </div>
+                    </fieldset>
+
+                
+                </form>
+                    
                
               
             </main>

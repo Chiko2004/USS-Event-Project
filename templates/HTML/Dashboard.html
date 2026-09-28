@@ -39,9 +39,9 @@
 
 
                 <div id="ProfileDiv">
-                    <a href="{{ url_for('profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
+                    <a href="{{ url_for('auth.profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
                     
-                    <a href="{{ url_for('profile') if user else url_for('login') }}">
+                    <a href="{{ url_for('auth.profile') if user else url_for('auth.login') }}">
                         <p id="ProfileUsername">
                             {% if user %}
                                 {{ user['first_name'] }} {{ user['last_name'] }}
@@ -99,14 +99,72 @@
                             </div>
 
                             <div class="Box">
-                                <a href= "{{ url_for ('logout')}}"><p>Logout</p></a>
+                                <a href= "{{ url_for ('auth.logout')}}"><p>Logout</p></a>
                             </div>
+
+                            <!-- Quick link for admins to access user management -->
+                            {% if user['role'] == 'Admin' %}
+                            <div class="Box">
+                                <a href="{{ url_for('admin.manage_users') }}"><p>Manage Users</p></a>
+                            </div>
+                            {% endif %}
                         </div>
 
                     </div>
-                </main>
 
-            </div>
+                    <!-- Admin User Management Table (Only shows up when all_users data is passed from the route) -->
+                    {% if all_users %}
+                    <div id="AdminUserManagementSection" style="margin-top: 30px;">
+                        <div class="Box">
+                            <h3>User Management Panel</h3>
+                            <table border="1" cellpadding="10">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>New Password</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for u in all_users %}
+                                    <!-- Each row is its own form, so editing and saving happens right here -->
+                                    <tr>
+                                        <form action="{{ url_for('admin.edit_user_inline', user_id=u['id']) }}" method="POST">
+                                            <td>{{ u['username'] }}</td>
+                                            <td>
+                                                <input type="text" name="first_name" value="{{ u['first_name'] }}" required style="width: 100px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="last_name" value="{{ u['last_name'] }}" required style="width: 100px;">
+                                            </td>
+                                            <td>
+                                                <input type="email" name="email" value="{{ u['email'] }}" required style="width: 150px;">
+                                            </td>
+                                            <td>
+                                                <select name="role">
+                                                    <option value="user" {% if u['role'] == 'user' %}selected{% endif %}>User</option>
+                                                    <option value="organiser" {% if u['role'] == 'organiser' %}selected{% endif %}>Organiser</option>
+                                                    <option value="Admin" {% if u['role'] == 'Admin' %}selected{% endif %}>Admin</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="password" name="password" placeholder="Leave blank" style="width: 100px;">
+                                            </td>
+                                            <td>
+                                                <button type="submit">Save</button>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    {% endif %}
 
     <!--#######################################################################################################-->
 
@@ -114,3 +172,6 @@
         </section>
     
 </body>
+</html>
+
+```

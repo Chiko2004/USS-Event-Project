@@ -39,9 +39,9 @@
 
 
                 <div id="ProfileDiv">
-                    <a href="{{ url_for('profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
+                    <a href="{{ url_for('auth.profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
                     
-                    <a href="{{ url_for('profile') if user else url_for('login') }}">
+                    <a href="{{ url_for('auth.profile') if user else url_for('auth.login') }}">
                         <p id="ProfileUsername">
                             {% if user %}
                                 {{ user['first_name'] }} {{ user['last_name'] }}
@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="Box">
-                                <a href= "{{ url_for ('logout')}}"><p>Logout</p></a>
+                                <a href= "{{ url_for ('auth.logout')}}"><p>Logout</p></a>
                             </div>
                         </div>
 
