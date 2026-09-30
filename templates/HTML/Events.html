@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Sidebar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/EventsContent.css') }}">
+    <script src="{{ url_for('static', filename='Javascript/event.js') }}"></script>
 </head>
 
 <!--#######################################################################################################-->
@@ -19,7 +20,7 @@
     <section itemscope itemtype="http://schema.org/Organization">
         <header>
             <div id="LogoIconDiv">
-                <a href="/Student-Portal"><img src="{{ url_for('static', filename='Media/CSU_logo_white.svg') }}" alt="Logo"></a>
+                <a href="/"><img src="{{ url_for('static', filename='Media/CSU_logo_white.svg') }}" alt="Logo"></a>
             </div>  
 
             <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="HeaderNav">
@@ -83,53 +84,49 @@
 
 
             <main>
-
                 <h2>Events</h2>
 
                 <div id="Columns">
 
                     <div id="Column1">
-                        <div id="EventBox">
-                            <div id="EventWrapper">
-                                <div class="Event" onclick="toggleEvent(this)">
-                                    <h3>misc event</h3>
+                        <div class="EventBox">
+                            <div class="EventWrapper">
+                                {% for event in events %} <!--for every event in events -->
+                                    <!-- Make sure both onclick and data-date are right here -->
+                                    <div class="Event" onclick="toggleEvent(this)" data-date="{{ event.date }}"> <!--toggle event this is for js-->
+                                        <h3>{{ event.title }}</h3>
                                         <div class="Event-summary-preview">Click to view details</div>
-                                            <div class="Event-dropdown">
-                                                <div class="EventDetails">
-                                                    
-                                                </div>
-
-                                                <div class="FavWrapper">
-                                                    <button class="FavButton"></button>
-                                                </div>
-
-                                                <div class="InterestedWrapper">
-                                                    <button class="Interested">I'm interested</button>
-
-                                                </div>
-
-                                                <div class="QRWrapper">
-
-                                                </div>
+                                        
+                                        <div class="Event-dropdown">
+                                            <div class="EventDetails">
+                                                <p id="EventTime">{{ event.start_time }} - {{ event.end_time }}</p>
+                                                <p id="EventDescription">{{ event.description }}</p>
                                             </div>
 
-                                </div>
+                                            <div class="InterestedWrapper">
+                                                <button class="Interested" data-id="{{ event.id }}">I'm interested</button>
+                                            </div>
 
-
-
-                                
+                                            <div class="QRWrapper">
+                                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=BEGIN%3AVCALENDAR%0AVERSION%3A2.0%0ABEGIN%3AVEVENT%0ASUMMARY%3A{{ event.title | urlencode }}%0ADESCRIPTION%3A{{ event.description | urlencode }}%0ALOCATION%3A{{ event.room | urlencode }}%0ADTSTART%3A{{ event.date | replace('-', '') }}T{{ event.start_time | replace(':', '') }}00%0ADTEND%3A{{ event.date | replace('-', '') }}T{{ event.end_time | replace(':', '') }}00%0AEND%3AVEVENT%0AEND%3AVCALENDAR" 
+                                                    alt="Calendar QR Code for {{ event['title'] }}"> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <p class="no-events-message">No upcoming events right now. Check back later!</p>
+                                {% endfor %}
                             </div>
                         </div>
-
                     </div>
 
                     <div id="Column2">
                         <div class="Box">
                             <div id="Calender">
                                 <div id="calendar-header">
-                                    <button type="button" onlick="ChangeMonth(-1)">&lt; prev</button>
+                                    <button type="button" onclick="changeMonth(-1)">&lt; prev</button>
                                     <h3 id="month-year-display">Month Year</h3>
-                                    <button type="button" onlick="ChangeMonth(1)">Next &gt;</button>
+                                    <button type="button" onclick="changeMonth(1)">Next &gt;</button>
                                 </div>
 
                                 <div class="calendar-weekdays">
@@ -142,12 +139,11 @@
                                     <div>Sun</div>
                                 </div>
 
+                                <!-- JavaScript will automatically fill the days here -->
                                 <div id="days-container" class="calendar-days-grid"></div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </main>
 

@@ -1,17 +1,11 @@
+/* --- 1. Main Container --- */
 main {
-    /* Font styling */
-    font-size: 30;
-
-
-    /* positioning and layout */
+    font-size: 30px;
     width: 100%;
     min-height: 100vh;
     margin-top: 70px; 
     flex: 1 0 75%;
     margin-left: 100px;
-
-
-    /* background styling */
     background-color: antiquewhite;
 }
 
@@ -22,37 +16,113 @@ main h2 {
     font-size: 35px;
 }
 
+/* --- 2. Columns Layout --- */
 #Columns {
-/* positioning and layout */
-padding-bottom: 35px;
-padding-left: 35px;
-padding-right: 35px;
-padding-top: 25px;
-display: flex;
-justify-content: space-between;
-
-
-
-/* background styling */
+    padding-bottom: 35px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
 }
 
-#Column1, #Column2 {
+/* --- 3. Column 1 (Events Section) --- */
+#Column1 {
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-
-}
-
-#Column1 {
     flex: 0 0 25%;
-    
 }
 
+.EventBox {
+    padding: 10px;
+    background-color: #555;
+    border: double;
+    overflow: auto;
+    max-height: 70vh;
+}
+
+#EventWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 80px;
+}
+
+.Event {
+    cursor: pointer;
+    padding: 15px;
+    background-color: #444;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    border: double;
+}
+
+.Event:hover {
+    background-color: #383838;
+}
+
+.Event h3 {
+    padding-bottom: 5px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.Event-summary-preview {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.Event .Event-dropdown {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #666;
+}
+
+.Event.active .Event-dropdown {
+    display: block;
+}
+
+.EventDetails {
+    font-weight: normal;
+    font-size: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.InterestedWrapper {
+    margin: 10px;
+}
+
+.QRWrapper {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.QRWrapper img {
+    border-radius: 4px;
+    background: white;
+    padding: 4px;
+}
+
+.no-events-message {
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* --- 4. Column 2 Layout (Calendar Container) --- */
 #Column2 {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
     flex: 0 0 75%;
-    
 }
 
 .Box {
@@ -60,45 +130,4 @@ justify-content: space-between;
     background-color: #555;
     border: double;
     min-height: 70vh;
-    
-
-}
-
-#EventBox {
-    padding: 10px;
-    background-color: #555;
-    border: double;
-    overflow: auto;
-    max-height: 70vh;
-
-}
-
-#EventWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 40px;
-
-}
-
-
-.Event h3 {
-    padding-bottom: 5px;
-    font-size: 30px;
-    font-weight: 700
-}
-
-.Event-summary-preview {
-    font-size: 15px;
-    font-weight: 300;
-    color: antiquewhite;
-}
-
-.Event-dropdown {
-    display: none;
-}
-
-.EventDetails{
-    font-weight: bold;
-
 }

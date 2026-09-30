@@ -48,8 +48,8 @@ def signup():
         # Hash the password so it's secure in the database (werkzeug security)
         hashed_password = generate_password_hash(password)
         
-        # Default new accounts to user
-        role = 'user' 
+        # Default new accounts to student
+        role = 'student' 
         
         conn = get_db_connection() # this was already declared but cannot be called on again because it was in a def(), therefore it has to be redeclared 
         try:

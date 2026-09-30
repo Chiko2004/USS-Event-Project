@@ -1,4 +1,7 @@
-/* Calendar Header Styling */
+#Calender {
+    width: 100%;
+}
+
 #calendar-header {
     display: flex;
     justify-content: space-between;
@@ -26,7 +29,6 @@
     margin: 0;
 }
 
-/* Weekday Labels Grid */
 .calendar-weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -37,14 +39,13 @@
     font-size: 14px;
 }
 
-/* Days Number Grid */
 .calendar-days-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 8px;
+    padding: 10px;
 }
 
-/* Individual Day Cell */
 .calendar-day {
     background-color: #444;
     color: white;
@@ -54,14 +55,20 @@
     font-size: 14px;
 }
 
-/* Empty offset cells for alignment */
 .calendar-day.empty {
     background-color: transparent;
 }
 
-/* Highlight Today's Date */
 .calendar-day.today {
-    background-color: #5c6bc0;
+    background-color: #5c6bc0 !important;
     font-weight: bold;
     border: 1px solid #9fa8da;
+}
+
+.calendar-day.event-target {
+    background-color: #f59e0b !important;
+    color: #000;
+    font-weight: bold;
+    transform: scale(1.05);
+    transition: background-color 0.2s ease;
 }

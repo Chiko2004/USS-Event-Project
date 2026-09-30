@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
 <head>
     <link rel="icon" href="{{ url_for('static', filename='Media/favicon.png') }}" type="image/x-icon">
@@ -8,181 +6,188 @@
     <title>USS Event Website</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/General.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/ProfileContent.css') }}">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/PortalContent.css') }}">  
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Main/Sidebar.css') }}">
 </head>
 
-
 <body>
-
-
     <section itemscope itemtype="http://schema.org/Organization">
-            <header>
-                <div id="LogoIconDiv">
-                    <a href="/Student-Portal"><img src="{{ url_for('static', filename='Media/CSU_logo_white.svg') }}" alt="Logo"></a>
-                </div>      
+        <header>
+            <div id="LogoIconDiv">
+                <a href="/"><img src="{{ url_for('static', filename='Media/CSU_logo_white.svg') }}" alt="Logo"></a>
+            </div>    
 
+            <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="HeaderNav">
+                <div id="HeaderNavDiv"></div>
+                <section id="HeaderNavSec">
+                    <ul>
+                        <li><a href="/" target="_self">Home</a></li>
+                        <li><a href="/About" target="_self">About</a></li>
+                        <li><a href="/Contact" target="_self">Contact</a></li>
+                        <li><a href="/Events" target="_self">Events</a></li>
+                        <li><a href="/Gallery" target="_self">Gallery</a></li>
+                        <li><a href="/What's new" target="_self">What's New</a></li>
+                    </ul>
+                </section>
+            </nav>
 
-                <nav itemscope itemtype="http://schema.org/SiteNavigationElement" id="HeaderNav">
-                    <div id="HeaderNavDiv">
-                        <!--Insert desgin here-->
-                    </div>
-                       
-                    <section id="HeaderNavSec">
-                        <ul>
-                            <li><a href="/" target="_self">Home</a></li>
-                            <li><a href="/About" target="_self">About</a></li>
-                            <li><a href="/Contact" target="_self">Contact</a></li>
-                            <li><a href="/Events" target="_self">Events</a></li>
-                            <li><a href="/Gallery" target="_self">Gallery</a></li>
-                            <li><a href="/What's new" target="_self">What's New</a></li>
-                        </ul>
-                    </section>
+            <div id="ProfileDiv">
+                <a href="{{ url_for('auth.profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
+               
+                <a href="{{ url_for('auth.profile') if user else url_for('auth.login') }}">
+                    <p id="ProfileUsername">
+                        {% if user %}
+                            {{ user['first_name'] }} {{ user['last_name'] }}
+                        {% else %}
+                            Log in / Sign up
+                        {% endif %}
+                    </p>
+                </a>
+            </div>
+        </header>
+
+        <div id="MainContainer">
+            <aside id="SideBar">
+                <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                    <ul>
+                        <li><a href="/Schedule" target="_self">Schedule</a></li>
+                        <li><a href="/Favourites" target="_self">Favourites</a></li>
+                        <li><a href="/Notifications" target="_self">Notifications</a></li>
+                        <li><a href="/Student Help" target="_self">Help</a></li>                        
+                        <li><a href="/Fees" target="_self">Fees</a></li>
+                    </ul>
                 </nav>
+            </aside>
 
+            <main>
+                <h2>Organiser Portal</h2>
+                <p></p>
 
-
-
-
-
-                <div id="ProfileDiv">
-                    <a href="{{ url_for('auth.profile') }}"><img id="ProfileIcon" src="{{ url_for('static', filename='Media/profile-pic.jpg') }}" alt="Profile"></a>
-                   
-                    <a href="{{ url_for('auth.profile') if user else url_for('auth.login') }}">
-                        <p id="ProfileUsername">
-                            {% if user %}
-                                {{ user['first_name'] }} {{ user['last_name'] }}
-                            {% else %}
-                                Log in / Sign up
-                            {% endif %}
-                        </p>
-                    </a>
-                </div>
-           
-            </header>
-
-
-    <!--########################################################################################################-->
-            <div id="MainContainer">
-
-
-
-
-    <!--########################################################################################################-->
-    <!--####################################      SideBar       ################################################-->
-    <!--########################################################################################################-->
-
-
-
-
-                <aside id="SideBar">
-                    <nav itemscope itemtype="http://schema.org/SiteNavigationElement"><!--flex-->
-                        <ul>
-                            <li><a href="/Schedule" target="_self">Schedule</a></li>
-                            <li><a href="/Favourites" target="_self">Favourites</a></li>
-                            <li><a href="/Notifications" target="_self">Notifications</a></li>
-                            <li><a href="/Student Help" target="_self">Help</a></li>                        
-                            <li><a href="/Fees" target="_self">Fees</a></li>
-                        </ul>
-                    </nav>
-                </aside>
-           
-
-
-    <!--#######################################################################################################-->
-
-
-
-
-                <main>
-
-
-                    <h2>Organiser Portal</h2>
-                   
-                    <p></p>
-
-
-                    <div id="Columns">
-
-
-                        <div id="Column1">
-                            <div class="Box">
-                                <h3>Account details</h3>
-                                <ul class="user-details">
-                                    <li>Status: {{user['role']}}</li>
-                                    <li>First name: {{user['first_name']}}</li>
-                                    <li>Surname: {{user['last_name']}}</li>
-                                    <li>DOB: {{user['dob']}}</li>
-                                </ul>
-                               
-                            </div>
-
-
-                           
-
-
-                            <div class="Box">
-                                <a href= "{{ url_for ('auth.logout')}}"><p>Logout</p></a>
-                            </div>
+                <div id="Columns">
+                    <!-- Column 1: Account Details & Logout -->
+                    <div id="Column1">
+                        <div class="Box">
+                            <h3>Account details</h3>
+                            <ul class="user-details">
+                                <li>Status: {{ user['role'] }}</li>
+                                <li>First name: {{ user['first_name'] }}</li>
+                                <li>Surname: {{ user['last_name'] }}</li>
+                                <li>DOB: {{ user['dob'] }}</li>
+                            </ul>
                         </div>
 
+                        <div class="Box">
+                            <a href="{{ url_for('auth.logout') }}"><p>Logout</p></a>
+                        </div>
+                    </div>
 
-                            <div id="Column2">
-                                <div class="Box">
-                                    <h3>Create New Event</h3>
-                                    
-                                    <!-- Single clean form wrapping all the event inputs -->
-                                    <form action="{{ url_for('organiser.create_event') }}" method="POST">
-                                        
-                                        <div class="form-group" style="margin-bottom: 15px;">
-                                            <label for="title">Event Title:</label><br>
-                                            <input type="text" id="title" name="title" required style="width: 100%;" placeholder="e.g., Cyber Security Workshop">
-                                        </div>
-
-                                        <div class="form-group" style="margin-bottom: 15px;">
-                                            <label for="description">Description:</label><br>
-                                            <textarea id="description" name="description" rows="3" required style="width: 100%;" placeholder="Brief details about the event..."></textarea>
-                                        </div>
-
-                                        <div class="form-group" style="margin-bottom: 15px;">
-                                            <label for="room">Room / Location:</label><br>
-                                            <input type="text" id="room" name="room" required style="width: 100%;" placeholder="e.g., Building 12, Room 204">
-                                        </div>
-
-                                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                                            <div style="flex: 1;">
-                                                <label for="start_time">Start Time:</label><br>
-                                                <input type="time" id="start_time" name="start_time" required style="width: 100%;">
-                                            </div>
-                                            <div style="flex: 1;">
-                                                <label for="end_time">End Time:</label><br>
-                                                <input type="time" id="end_time" name="end_time" required style="width: 100%;">
-                                            </div>
-                                        </div>
-
-                                        <!-- Calendar Widget for selecting a date -->
-                                        <div id="Calender" style="margin-bottom: 15px;">
-                                            <!-- Date of event -->
-                                            <label for="date">Date of event:</label>
-                                            <input type="date" id="date" name="date" value="{{ request.form.get('date')}}" required>
-                                            <br>
-                                        </div>
-
-                                        <button type="submit" style="width: 100%; padding: 10px; cursor: pointer;">Publish Event</button>
-                                    </form>
+                    <!-- Column 2: Create Event Form -->
+                    <div id="Column2">
+                        <div class="Box">
+                            <h3>Create New Event</h3>
+                            
+                            <form action="{{ url_for('organiser.create_event') }}" method="POST">
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="title">Event Title:</label><br>
+                                    <input type="text" id="title" name="title" required style="width: 100%;" placeholder="e.g., Cyber Security Workshop">
                                 </div>
+
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="description">Description:</label><br>
+                                    <textarea id="description" name="description" rows="3" required style="width: 100%;" placeholder="Brief details about the event..."></textarea>
+                                </div>
+
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="room">Room / Location:</label><br>
+                                    <input type="text" id="room" name="room" required style="width: 100%;" placeholder="e.g., Building 12, Room 204">
+                                </div>
+
+                                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                    <div style="flex: 1;">
+                                        <label for="start_time">Start Time:</label><br>
+                                        <input type="time" id="start_time" name="start_time" required style="width: 100%;">
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label for="end_time">End Time:</label><br>
+                                        <input type="time" id="end_time" name="end_time" required style="width: 100%;">
+                                    </div>
+                                </div>
+
+                                <div id="Calender" style="margin-bottom: 15px;">
+                                    <label for="date">Date of event:</label>
+                                    <input type="date" id="date" name="date" value="{{ request.form.get('date') }}" required>
+                                    <br>
+                                </div>
+
+                                <button type="submit" style="width: 100%; padding: 10px; cursor: pointer;">Publish Event</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Manage/Delete Events & Attendee Interest Tracker -->
+                    <div id="Column3">
+                        <div id="Column-Manage-Events" style="margin-top: 30px;">
+                            <div class="Box" style="margin-bottom: 20px;">
+                                <h3>Manage / Delete Your Events</h3>
+                                
+                                {% if events %}
+                                    <ul style="list-style-type: none; padding: 0;">
+                                        {% for event in events %}
+                                        <li style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #ddd;">
+                                            <div>
+                                                <strong>{{ event['title'] }}</strong> 
+                                                <span style="font-size: 0.9em; color: #ccc;">({{ event['date'] }} at {{ event['start_time'] }})</span>
+                                            </div>
+                                            
+                                            <form action="{{ url_for('organiser.delete_event', event_id=event['id']) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this event?');">
+                                                <button type="submit" style="background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;">Delete</button>
+                                            </form>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <p>You haven't created any events yet.</p>
+                                {% endif %}
                             </div>
-                </main>
 
+                            <!-- NEW: Interested Users Tracker Section -->
+                            <div class="Box">
+                                <h3 style="color: #f59e0b; margin-bottom: 15px;">Attendee Interest Tracker</h3>
+                                
+                                {% if events %}
+                                    {% for event in events %}
+                                        <div style="background: #444; padding: 12px; border-radius: 5px; margin-bottom: 15px; border: 1px solid #666;">
+                                            <h4 style="font-size: 18px; margin-bottom: 5px; color: #fff;">{{ event['title'] }}</h4>
+                                            
+                                            {% set interested_list = interests_by_event.get(event['id'], []) %}
+                                            <p style="font-size: 0.9em; color: #ccc; margin-bottom: 8px;">
+                                                <strong>Total Interested:</strong> {{ interested_list | length }}
+                                            </p>
+                                            
+                                            {% if interested_list %}
+                                                <ul style="list-style-type: disc; margin-left: 20px; font-size: 0.9em; color: #ddd;">
+                                                    {% for attendee in interested_list %}
+                                                        <li>
+                                                            {{ attendee['name'] }} (@{{ attendee['username'] }}) – 
+                                                            <a href="mailto:{{ attendee['email'] }}" style="color: #60a5fa;">{{ attendee['email'] }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                <p style="font-style: italic; font-size: 0.85em; color: #aaa;">No one has marked interest yet.</p>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No events available to track.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
 
-            </div>
-
-
-    <!--#######################################################################################################-->
-
-
-
-
-        </section>
-   
+                </div>
+            </main>
+        </div>
+    </section>
 </body>
+</html>
